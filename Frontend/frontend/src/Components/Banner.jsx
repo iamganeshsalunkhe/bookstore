@@ -8,7 +8,7 @@ function Banner() {
             <div className="space-y-12 ">
                 <h1 className="text-4xl font-bold">Hello, welcome here to learn something <span className="text-pink-500">new everyday</span> </h1>
                 <p className="text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aspernatur quo sit nemo minima at repudiandae enim beatae id officia.</p>
-            <label className="input input-bordered flex items-center gap-2">
+            <label className="input input-bordered flex items-center gap-2 w-96">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16"
@@ -19,12 +19,12 @@ function Banner() {
                     <path
                     d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                 </svg>
-            <input type="text" className="grow" placeholder="Email" />
+            <input type="text" className="grow" placeholder="Email"  name='email' autoComplete='off' />
             </label>
 
             </div>
 
-            <button className="btn mt-6 btn-secondary">Secondary</button>
+            <button className="btn mt-6 btn-secondary">Get updates!</button>
             </div>
             <div className="order-1 w-full md:w-1/2  ">
                 <img src={BannerImage} className='w-92 h-92' alt='Image'/>
