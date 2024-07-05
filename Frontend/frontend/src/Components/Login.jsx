@@ -9,21 +9,22 @@ function Login() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit =  async (data) => {
     const userInfo = {
       email: data.email,
-      password: data.password,
+      password: data.password
+    // console.log("i am fired")
     };
     await axios
-      .post("http://localhost:4001/user/login", userInfo)
+      .post("http://localhost:4005/user/login", userInfo)
       .then((res) => {
         // console.log(res.data);
         if (res.data) {
           toast.success("Loggedin Successfully");
           document.getElementById("my_modal_3").close();
           setTimeout(() => {
-            window.location.reload();
             localStorage.setItem("Users", JSON.stringify(res.data.user));
+            // window.location.reload();
           }, 1000);
         }
       })
@@ -39,8 +40,7 @@ function Login() {
     <div>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
-          <form onSubmit={handleSubmit(onSubmit)} method="dialog">
-            {/* if there is a button in form, it will close the modal */}
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Link
               to="/"
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -59,7 +59,7 @@ function Login() {
                 placeholder="Enter your email"
                 className="w-96 px-3 py-1 border rounded-md outline-none"
                 {...register("email", { required: true })}
-                autoComplete="off"
+                autoComplete="on"
               />
               <br />
               {errors.email && (
@@ -88,18 +88,17 @@ function Login() {
 
             {/* Button */}
             <div className="flex justify-around mt-6">
-              <button className="bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200">
+              <button className="bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200" type="submit">
                 Login
               </button>
               </div>
               <div className="text-center m-4">
                 <p>
-                Not registered?{" "}
+                Not registered?
                 <Link
                   to="/signup"
                   className="underline text-blue-500 cursor-pointer"
-                  >
-                      
+                  > 
                   Signup
                 </Link>
                 </p>

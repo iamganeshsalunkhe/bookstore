@@ -3,6 +3,8 @@ import Login from "./Login";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
+
+
 function Signup() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -17,10 +19,10 @@ function Signup() {
     const userInfo = {
       fullname: data.fullname,
       email: data.email,
-      password: data.password,
+      password: data.password
     };
     await axios
-      .post("http://localhost:4001/user/signup", userInfo)
+      .post("http://localhost:4005/user/signup", userInfo)
       .then((res) => {
         // console.log(res.data);
         if (res.data) {
@@ -52,7 +54,7 @@ function Signup() {
 
               <h3 className="font-bold text-lg">Signup</h3>
               <div className="mt-4 space-y-2">
-                <span>Name</span>
+                <span>Fullname</span>
                 <br />
                 <input
                   type="text"
@@ -115,11 +117,11 @@ function Signup() {
                     }
                   >
                     Login
-                  </button>{" "}
-                  <Login />
+                  </button>
                 </p>
               </div>
             </form>
+            <Login />
           </div>
         </div>
       </div>
