@@ -1,13 +1,17 @@
+/* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useAuth } from "../Context/AuthProvider";
 function Login() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  
+  const [setAuthuser] = useAuth()
 
   const onSubmit =  async (data) => {
     const userInfo = {
@@ -22,9 +26,11 @@ function Login() {
         if (res.data) {
           toast.success("Loggedin Successfully");
           document.getElementById("my_modal_3").close();
+          localStorage.setItem("Users", JSON.stringify(res.data.user));
+
           setTimeout(() => {
-            localStorage.setItem("Users", JSON.stringify(res.data.user));
-            // window.location.reload();
+            window.location.reload();
+            console.log(res.data.user)
           }, 1000);
         }
       })

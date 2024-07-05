@@ -7,15 +7,18 @@ function Logout() {
     const [authuser, setAuthuser] = useAuth()
     function handleLogout(){
         try {
-            setAuthuser(null)
+            setAuthuser({
+                ...authuser,
+                user:null
+            })
             localStorage.removeItem("Users")
             toast.success("Logout Successfully")
-            document.getElementById("my_modal_3").close();
         setTimeout(() => {
+            window.location.reload()
         }, 1000);
             return <Navigate to ='/'/>
         } catch (error) {
-            toast.error("Error : " + error.message)
+            toast.error("Error : " + error)
             setTimeout(() =>{},2000)
         }
     }

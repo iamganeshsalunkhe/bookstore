@@ -9,7 +9,7 @@ function Course() {
     const getBook = async () => {
       try {
         const res = await axios.get("http://localhost:4005/book");
-        console.log(res.data);
+        // console.log(res.data);
         setBook(res.data);
       } catch (error) {
         console.log(error);

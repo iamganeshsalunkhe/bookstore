@@ -24,7 +24,7 @@ function Signup() {
     await axios
       .post("http://localhost:4005/user/signup", userInfo)
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         if (res.data) {
           toast.success("Signup Successfully");
           navigate(from, { replace: true });
@@ -43,7 +43,7 @@ function Signup() {
       <div className="flex h-screen items-center justify-center">
         <div className=" w-[600px] ">
           <div className="modal-box">
-            <form onSubmit={handleSubmit(onSubmit)} method="dialog">
+            <form onSubmit={handleSubmit(onSubmit)}>
               {/* if there is a button in form, it will close the modal */}
               <Link
                 to="/"
@@ -77,6 +77,7 @@ function Signup() {
                   type="email"
                   placeholder="Enter your email"
                   className="w-80 px-3 py-1 border rounded-md outline-none"
+                  autoComplete="on"
                   {...register("email", { required: true })}
                 />
                 <br />
